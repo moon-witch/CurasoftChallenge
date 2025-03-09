@@ -10,8 +10,8 @@ const router = createRouter({
       component: StartPage,
     },
     {
-      path: "/protocol",
-      name: "protocol",
+      path: "/log",
+      name: "log",
       component: () => import("../pages/ProtokollPage/ProtokollPage.vue"),
     },
     {

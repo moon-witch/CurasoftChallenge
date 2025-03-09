@@ -35,6 +35,10 @@ onMounted(async () => {
     bottom: 50px;
     right: 25px;
     width: 35rem;
+
+    @media (max-width: 1023px) {
+      display: none;
+    }
   }
 }
 </style>

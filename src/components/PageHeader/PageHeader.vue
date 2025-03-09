@@ -26,8 +26,8 @@ const currentRoute = computed(() => {
         <li class="nav-item" :class="{ active: currentRoute === '/settings' }">
           <RouterLink to="/settings" class="a">Einstellungen</RouterLink>
         </li>
-        <li class="nav-item" :class="{ active: currentRoute === '/protocol' }">
-          <RouterLink to="/protocol" class="a">Protokoll</RouterLink>
+        <li class="nav-item" :class="{ active: currentRoute === '/log' }">
+          <RouterLink to="/log" class="a">Protokoll</RouterLink>
         </li>
       </ul>
     </nav>
@@ -81,6 +81,23 @@ const currentRoute = computed(() => {
         .a {
           opacity: 1;
         }
+      }
+    }
+  }
+
+  @media (max-width: 1023px) {
+    align-items: start;
+    justify-content: space-between;
+    .nav {
+      background: var(--accent-color);
+      height: auto;
+      padding: 2rem;
+      margin-top: 50%;
+      z-index: 2;
+      box-shadow: -2px 2px 8px 0 grey;
+      .nav-list {
+        flex-direction: column;
+        justify-content: start;
       }
     }
   }

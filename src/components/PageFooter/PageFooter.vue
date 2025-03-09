@@ -16,8 +16,8 @@
 <style scoped lang="scss">
 .footer {
   position: absolute;
-  bottom: 15px;
-  right: 30px;
+  bottom: 20px;
+  right: 40px;
 
   .links {
     display: flex;
@@ -31,6 +31,7 @@
       color: black;
       opacity: 0.5;
       transition: opacity 0.1s ease-in-out;
+      font-size: small;
 
       &:hover {
         opacity: 0.75;
