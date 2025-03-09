@@ -10,12 +10,12 @@ const props = defineProps( {
 })
 
 const protokollStore = useProtokollStore()
-const data = protokollStore.getItems()
+const data: any = protokollStore.getItems()
 const filteredData = computed(() => {
   if (props.filter === "alle") {
-    return data.value.items;
+    return data.value.items!;
   }
-  return data.value.items.filter((item) => item.typ === props.filter);
+  return data.value.items!.filter((item: any) => item.typ === props.filter);
 });
 </script>
 
