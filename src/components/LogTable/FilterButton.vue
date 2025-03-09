@@ -3,8 +3,8 @@ import { ref } from "vue";
 
 const emit = defineEmits(["filter"]);
 
-type Filter = "Alle" | "Fehler" | "Warnung" | "Log";
-const currentFilter = ref<Filter>("Alle");
+type Filter = "alle" | "fehler" | "warnung" | "log";
+const currentFilter = ref<Filter>("alle");
 
 const changeFilter = (newFilter: Filter) => {
   currentFilter.value = newFilter;
@@ -16,29 +16,29 @@ const changeFilter = (newFilter: Filter) => {
   <section class="filter">
     <button
       class="filter-button"
-      :class="{ active: currentFilter === 'Alle' }"
-      @click="changeFilter('Alle')"
+      :class="{ active: currentFilter === 'alle' }"
+      @click="changeFilter('alle')"
     >
       Alle
     </button>
     <button
       class="filter-button"
-      :class="{ active: currentFilter === 'Fehler' }"
-      @click="changeFilter('Fehler')"
+      :class="{ active: currentFilter === 'fehler' }"
+      @click="changeFilter('fehler')"
     >
       Fehler
     </button>
     <button
       class="filter-button"
-      :class="{ active: currentFilter === 'Warnung' }"
-      @click="changeFilter('Warnung')"
+      :class="{ active: currentFilter === 'warnung' }"
+      @click="changeFilter('warnung')"
     >
       Warnung
     </button>
     <button
       class="filter-button"
-      :class="{ active: currentFilter === 'Log' }"
-      @click="changeFilter('Log')"
+      :class="{ active: currentFilter === 'log' }"
+      @click="changeFilter('log')"
     >
       Log
     </button>

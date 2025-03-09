@@ -1,16 +1,29 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { computed, ref, watch } from "vue";
 import DataElement from "@/components/LogTable/DataElement.vue";
 import { useProtokollStore } from "@/stores/protokoll";
 
+const props = defineProps( {
+  filter: {
+    type: String,
+  }
+})
+
 const protokollStore = useProtokollStore()
 const data = protokollStore.getItems()
+const filteredData = computed(() => {
+  if (props.filter === "alle") {
+    return data.value.items;
+  }
+  return data.value.items.filter((item) => item.typ === props.filter);
+});
 </script>
 
 <template>
   <section v-if="data" class="list">
+    {{ filter }}
       <DataElement
-        v-for="dataSet in data.items"
+        v-for="dataSet in filteredData"
         :key="dataSet.id"
         :type="dataSet.typ"
         :employee="

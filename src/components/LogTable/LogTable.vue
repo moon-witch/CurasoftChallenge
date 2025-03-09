@@ -17,7 +17,7 @@ const changeFilter = (event: string) => {
 
 <template>
   <FilterButton @filter="changeFilter($event)" />
-  <DataList />
+  <DataList :filter="currentFilter"/>
   <section class="pagination"></section>
 </template>
 
