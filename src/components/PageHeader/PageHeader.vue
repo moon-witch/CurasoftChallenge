@@ -136,11 +136,15 @@ const handleToggle = () => {
       z-index: 2;
       box-shadow: -2px 2px 8px 0 grey;
       position: absolute;
-      transform: translateX(500px);
+      transform: translateX(1000px);
       transition: transform 0.2s ease-in-out;
 
       &.open {
-        transform: translateX(210px);
+        transform: translateX(610px);
+
+        @media (max-width: 400px) {
+          transform: translateX(210px);
+        }
       }
       .nav-list {
         flex-direction: column;
