@@ -53,7 +53,7 @@ watch(inputString, () => {
 
 <style scoped>
 .card {
-  max-width: 800px;
+  max-width: 750px;
   height: 88dvh;
   background: white;
   border-radius: 5px;

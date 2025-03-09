@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import FilterButton from "@/components/LogTable/FilterButton.vue";
 
 defineProps({
@@ -8,14 +8,18 @@ defineProps({
   },
 });
 
-const currentFilter = ref('Alle')
+const currentFilter = ref("Alle");
 const changeFilter = (event: Record<string, any>) => {
-  currentFilter.value = event.target.textContent;
+  currentFilter.value = event;
 }
+
+watch(currentFilter, () => {
+  console.log("currentFilter", currentFilter.value);
+})
 </script>
 
 <template>
-  <FilterButton @click="changeFilter($event)" />
+  <FilterButton @filter="changeFilter($event)" />
   {{ currentFilter }}
   <section class="list"></section>
   <section class="pagination"></section>
