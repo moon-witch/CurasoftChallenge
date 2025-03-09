@@ -1,8 +1,10 @@
 <template>
   <template v-if="isUserAuthorized">
-    <PageHeader />
-    <RouterView />
-    <PageFooter />
+    <div class="container">
+      <PageHeader />
+      <RouterView />
+      <PageFooter />
+    </div>
   </template>
   <EmptyTokenWarning v-else />
 </template>
@@ -30,4 +32,8 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.container {
+  overflow-x: hidden;
+  min-height: 100dvh;
+}
 </style>

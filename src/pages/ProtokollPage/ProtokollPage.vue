@@ -1,7 +1,29 @@
+<script setup lang="ts">
+import ContentCard from "@/components/ContentCard/ContentCard.vue";
+import { useProtokollStore } from "@/stores/protokoll";
+import { onMounted, ref } from "vue";
+import LogTable from "@/components/LogTable/LogTable.vue";
+
+const protokollStore = useProtokollStore();
+
+const searchString = ref("")
+const handleSearch = (event: string) => {
+  searchString.value = event;
+};
+
+onMounted(async () => {
+  await protokollStore.request();
+});
+</script>
+
 <template>
   <main class="page">
-    <ContentCard title="Protokoll" class="contentCad">
-      Protokollliste soll hier sein
+    <ContentCard
+      title="Protokoll"
+      class="contentCard"
+      @searching="handleSearch($event)"
+    >
+      <LogTable :searchString="searchString" />
     </ContentCard>
     <img
       class="bg-img"
@@ -11,24 +33,13 @@
   </main>
 </template>
 
-<script setup lang="ts">
-import ContentCard from "@/components/ContentCard/ContentCard.vue";
-import { useProtokollStore } from "@/stores/protokoll";
-import { onMounted } from "vue";
-
-const protokollStore = useProtokollStore();
-
-// ...
-
-onMounted(async () => {
-  await protokollStore.request();
-});
-</script>
-
 <style scoped lang="scss">
 .page {
-  padding: 10px;
-  background: springgreen;
+  padding: 2rem 5rem;
+
+  @media (max-width: 1023px) {
+    padding: 0.5rem 1rem;
+  }
 
   .bg-img {
     position: absolute;

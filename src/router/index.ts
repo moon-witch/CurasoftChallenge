@@ -29,6 +29,16 @@ const router = createRouter({
       name: "settings",
       component: () => import("../pages/SettingsPage/SettingsPage.vue"),
     },
+    {
+      path: "/imprint",
+      name: "imprint",
+      component: () => import("../pages/ImprintPage/ImprintPage.vue"),
+    },
+    {
+      path: "/data-protection",
+      name: "data-protection",
+      component: () => import("../pages/DataProtectionPage/DataProtectionPage.vue"),
+    },
   ],
 });
 
