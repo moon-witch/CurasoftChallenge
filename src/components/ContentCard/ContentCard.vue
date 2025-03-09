@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import { vOnClickOutside } from '@vueuse/components'
+import { vOnClickOutside } from "@vueuse/components";
 
 defineProps<{
   title: string;
@@ -58,6 +58,7 @@ watch(inputString, () => {
   background: white;
   border-radius: 5px;
   box-shadow: 0 2px 2px 0 grey;
+  overflow: auto;
 
   @media (max-width: 1023px) {
     height: 82dvh;
@@ -96,6 +97,10 @@ watch(inputString, () => {
         &.open {
           padding: 0.25rem 0.5rem;
           width: 100%;
+
+          @media (max-width: 1023px) {
+            width: 50%;
+          }
         }
       }
     }

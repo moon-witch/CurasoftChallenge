@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import FilterButton from "@/components/LogTable/FilterButton.vue";
+import DataList from "@/components/LogTable/DataList.vue";
 
 defineProps({
   searchString: {
@@ -9,19 +10,14 @@ defineProps({
 });
 
 const currentFilter = ref("Alle");
-const changeFilter = (event: Record<string, any>) => {
+const changeFilter = (event: string) => {
   currentFilter.value = event;
 }
-
-watch(currentFilter, () => {
-  console.log("currentFilter", currentFilter.value);
-})
 </script>
 
 <template>
   <FilterButton @filter="changeFilter($event)" />
-  {{ currentFilter }}
-  <section class="list"></section>
+  <DataList />
   <section class="pagination"></section>
 </template>
 

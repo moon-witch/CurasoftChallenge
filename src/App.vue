@@ -21,9 +21,16 @@ const userStore = useUserStore();
 const isUserAuthorized = computed(() => userStore.getAuthorizationStatus);
 
 const getToken = (): string | null => {
-  // ..
-  return `Bearer ${import.meta.env.CURA_API_TOKEN}`; // change token here
-  // return null; // change token here
+  const token = import.meta.env.VITE_CURA_API_TOKEN;
+
+  if (localStorage.getItem("token")) {
+    return `Bearer ${localStorage.getItem("token")}`;
+  } else if (token) {
+    localStorage.setItem("token", token);
+    return `Bearer ${token}`;
+  } else {
+    return null;
+  }
 };
 
 onMounted(() => {
