@@ -3,6 +3,11 @@
     <ContentCard title="Protokoll" class="contentCad">
       Protokollliste soll hier sein
     </ContentCard>
+    <img
+      class="bg-img"
+      src="/mockup_bg-CgVORq9O.png"
+      alt="exclamation mark background image"
+    />
   </main>
 </template>
 
@@ -20,11 +25,16 @@ onMounted(async () => {
 });
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .page {
-  width: 100%;
   padding: 10px;
   background: springgreen;
-  /* --- */
+
+  .bg-img {
+    position: absolute;
+    bottom: 50px;
+    right: 25px;
+    width: 35rem;
+  }
 }
 </style>

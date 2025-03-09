@@ -2,7 +2,7 @@
 import { useRoute } from "vue-router";
 import { computed } from "vue";
 
-const route = useRoute()
+const route = useRoute();
 
 const currentRoute = computed(() => {
   return route.fullPath;
@@ -12,22 +12,22 @@ const currentRoute = computed(() => {
 <template>
   <header class="header">
     <div class="logo">GO.VITAL</div>
-    <nav>
-      <ul>
+    <nav class="nav">
+      <ul class="nav-list">
         <li class="nav-item" :class="{ active: currentRoute === '/' }">
-          <RouterLink to="/">Start</RouterLink>
+          <RouterLink to="/" class="a">Start</RouterLink>
         </li>
         <li class="nav-item" :class="{ active: currentRoute === '/patients' }">
-          <RouterLink to="/patients">Patienten</RouterLink>
+          <RouterLink to="/patients" class="a">Patienten</RouterLink>
         </li>
         <li class="nav-item" :class="{ active: currentRoute === '/graphs' }">
-          <RouterLink to="/graphs">Kurven</RouterLink>
+          <RouterLink to="/graphs" class="a">Kurven</RouterLink>
         </li>
         <li class="nav-item" :class="{ active: currentRoute === '/settings' }">
-          <RouterLink to="/settings">Einstellungen</RouterLink>
+          <RouterLink to="/settings" class="a">Einstellungen</RouterLink>
         </li>
         <li class="nav-item" :class="{ active: currentRoute === '/protocol' }">
-          <RouterLink to="/protocol">Protokoll</RouterLink>
+          <RouterLink to="/protocol" class="a">Protokoll</RouterLink>
         </li>
       </ul>
     </nav>
@@ -49,31 +49,36 @@ const currentRoute = computed(() => {
     padding: 0.5rem;
     color: white;
   }
-  nav {
+  .nav {
     height: 100%;
-    ul {
+    .nav-list {
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 2.5rem;
       list-style: none;
-      li {
+      .nav-item {
         height: calc(100% - 2px);
         display: flex;
         align-items: center;
         justify-content: center;
         border-bottom: 2px solid transparent;
+        transition: border-bottom 0.3s ease-in-out;
       }
-      a {
+      .a {
         text-decoration: none;
         color: white;
         opacity: 0.75;
+        transition: opacity 0.1s ease-in-out;
+
+        &:hover {
+          opacity: 1;
+        }
       }
       .active {
         border-bottom: 2px solid white;
-        a {
-          font-weight: bold;
+        .a {
           opacity: 1;
         }
       }
