@@ -19,7 +19,7 @@ defineProps({
         {{ message}}
       </div>
       <div class="stamp">
-        {{new Date(timestamp)}} von {{ employee}}
+        {{timestamp}} von {{ employee}}
       </div>
     </div>
   </section>
