@@ -1,0 +1,27 @@
+@import './fonts/roboto/stylesheet.css';
+@import './fonts/bebas-neue/stylesheet.css';
+
+:root {
+  --accent-color: #FF6F61;
+
+  --primary-text-color: #000000;
+  --secondary-text-color: #888888;
+  --font-family-main: 'Roboto';
+  --font-family-secondary: 'Bebas Neue';
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  background: radial-gradient(circle, #e9e9e9 0%, #cad5ca 100%);
+  font-family: var(--font-family-main), sans-serif;
+}
+
+ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  padding-inline-start: 0;
+}
