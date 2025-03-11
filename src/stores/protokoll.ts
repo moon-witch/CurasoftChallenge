@@ -9,12 +9,22 @@ export const useProtokollStore = defineStore("protokoll", () => {
   const totalPages = ref<number>(1);
   const pageSize = ref<number>(10);
   const isLoading = ref(true);
+  const searchString = ref<string | null>(null);
 
   const getItems = computed(() => {
       return lastResponse.value || {};
     });
 
-  const request = async (page: number = currentPage.value, needle: string | null = null) => {
+  function updateSearchString(str: string) {
+    searchString.value = str;
+    console.log(searchString.value);
+  }
+
+  function updateCurrentPage(page: number) {
+    currentPage.value = page;
+  }
+
+  const request = async (page: number = currentPage.value, needle: string | null = searchString.value) => {
     try {
       isLoading.value = true;
       const response = await api.request({
@@ -30,7 +40,8 @@ export const useProtokollStore = defineStore("protokoll", () => {
       const data = await response.json();
 
       lastResponse.value = data;
-      totalPages.value = data.page_count
+      totalPages.value = data.page_count;
+      currentPage.value = data.page;
       console.log('data', data)
       console.log('pages', totalPages.value)
     } catch (error) {
@@ -40,5 +51,5 @@ export const useProtokollStore = defineStore("protokoll", () => {
     }
   };
 
-  return { lastResponse, isLoading, currentPage, getItems, request };
+  return { lastResponse, isLoading, currentPage, totalPages, updateSearchString, updateCurrentPage,  getItems, request };
 });

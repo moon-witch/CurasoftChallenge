@@ -17,7 +17,8 @@ const handleSearch = (event: string) => {
 };
 
 const newQuery = () => {
-  protokollStore.request(protokollStore.currentPage, searchString.value)
+  protokollStore.updateSearchString(searchString.value);
+  protokollStore.request()
 }
 
 onMounted(async () => {
