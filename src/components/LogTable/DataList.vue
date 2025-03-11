@@ -12,16 +12,19 @@ const props = defineProps( {
 const protokollStore = useProtokollStore()
 const data: any = protokollStore.getItems()
 const filteredData = computed(() => {
-  if (props.filter === "alle") {
-    return data.value.items!;
+  if (data.value.items) {
+    if (props.filter === "alle") {
+      return data.value.items;
+    }
+    return data.value.items.filter((item: any) => item.typ === props.filter);
   }
-  return data.value.items!.filter((item: any) => item.typ === props.filter);
+  return []
 });
 </script>
 
 <template>
-  <section v-if="data" class="list">
-    {{ filter }}
+  <section class="list">
+      <div v-if="filteredData.length === 0" class="no-data">Keine Einträge</div>
       <DataElement
         v-for="dataSet in filteredData"
         :key="dataSet.id"

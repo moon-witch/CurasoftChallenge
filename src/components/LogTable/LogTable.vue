@@ -9,7 +9,7 @@ defineProps({
   },
 });
 
-const currentFilter = ref("Alle");
+const currentFilter = ref("alle");
 const changeFilter = (event: string) => {
   currentFilter.value = event;
 }

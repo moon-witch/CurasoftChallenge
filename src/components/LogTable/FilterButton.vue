@@ -3,7 +3,7 @@ import { ref } from "vue";
 
 const emit = defineEmits(["filter"]);
 
-type Filter = "alle" | "fehler" | "warnung" | "log";
+type Filter = "alle" | "error" | "warning" | "log";
 const currentFilter = ref<Filter>("alle");
 
 const changeFilter = (newFilter: Filter) => {
@@ -23,15 +23,15 @@ const changeFilter = (newFilter: Filter) => {
     </button>
     <button
       class="filter-button"
-      :class="{ active: currentFilter === 'fehler' }"
-      @click="changeFilter('fehler')"
+      :class="{ active: currentFilter === 'error' }"
+      @click="changeFilter('error')"
     >
       Fehler
     </button>
     <button
       class="filter-button"
-      :class="{ active: currentFilter === 'warnung' }"
-      @click="changeFilter('warnung')"
+      :class="{ active: currentFilter === 'warning' }"
+      @click="changeFilter('warning')"
     >
       Warnung
     </button>
