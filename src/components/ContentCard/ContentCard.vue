@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import { vOnClickOutside } from "@vueuse/components";
+import SearchIcon from "@/assets/icons/magnifying-glass-solid.svg"
 
 defineProps<{
   title: string;
@@ -37,12 +38,7 @@ watch(inputString, () => {
           class="search-bar"
           :class="{ open: searchbarOpen }"
         />
-        <img
-          class="search-button"
-          src="/icons/magnifying-glass-solid.svg"
-          alt="search button"
-          @click="toggleSearchbar"
-        />
+        <SearchIcon class="search-button" :style="{ fill: 'white' }" @click="toggleSearchbar"/>
       </div>
     </header>
     <div class="content">
@@ -83,7 +79,6 @@ watch(inputString, () => {
       .search-button {
         width: 20px;
         cursor: pointer;
-        filter: invert(100%);
       }
 
       .search-bar {

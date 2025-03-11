@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import InfoIcon from "@/assets/icons/circle-info-solid.svg"
+import WarningIcon from "@/assets/icons/triangle-exclamation-solid.svg"
+import ErrorIcon from "@/assets/icons/circle-xmark-solid.svg"
+
 defineProps({
   type: String,
   message: String,
@@ -10,9 +14,9 @@ defineProps({
 <template>
   <section class="element">
     <div class="type">
-      <img v-if="type === 'log'" src="/icons/circle-info-solid.svg" alt="log symbol" class="icon" />
-      <img v-if="type === 'warning'" src="/icons/triangle-exclamation-solid.svg" alt="warning symbol" class="icon" />
-      <img v-if="type === 'error'" src="/icons/circle-xmark-solid.svg" alt="error symbol" class="icon" />
+      <InfoIcon v-if="type === 'log'" class="icon" :style="{ fill: '#888888'}"/>
+      <WarningIcon v-if="type === 'warning'" class="icon" :style="{ fill: '#888888'}" />
+      <ErrorIcon v-if="type === 'error'" class="icon" :style="{ fill: '#888888'}" />
     </div>
     <div class="info">
       <div class="message">
@@ -35,7 +39,6 @@ defineProps({
   .icon {
     width: 20px;
     padding: 1rem;
-    filter: invert(51%) sepia(0%) saturate(813%) hue-rotate(237deg) brightness(105%) contrast(91%);
   }
 
   .stamp {
