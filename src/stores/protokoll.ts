@@ -8,6 +8,7 @@ export const useProtokollStore = defineStore("protokoll", () => {
   const currentPage = ref<number>(1);
   const totalPages = ref<number>(1);
   const pageSize = ref<number>(10);
+  const isLoading = ref(true);
 
   const getItems = () =>
     computed(() => {
@@ -16,6 +17,7 @@ export const useProtokollStore = defineStore("protokoll", () => {
 
   const request = async (page = currentPage.value) => {
     try {
+      isLoading.value = true;
       const response = await api.request({
         path: "web/v3/go.vital/protocol",
         method: "GET",
@@ -30,8 +32,10 @@ export const useProtokollStore = defineStore("protokoll", () => {
       lastResponse.value = data;
     } catch (error) {
       console.error("Error fetiching data:", error);
+    } finally {
+      isLoading.value = false;
     }
   };
 
-  return { lastResponse, getItems, request };
+  return { lastResponse, isLoading, getItems, request };
 });

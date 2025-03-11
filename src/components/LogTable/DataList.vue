@@ -20,11 +20,14 @@ const filteredData = computed(() => {
   }
   return []
 });
+
+const loading = computed(() => { return protokollStore.isLoading })
 </script>
 
 <template>
   <section class="list">
-      <div v-if="filteredData.length === 0" class="no-data">Keine Einträge</div>
+    <div v-if="loading">Lade Daten...</div>
+      <div v-if="filteredData.length === 0 && !loading" class="no-data">Keine Einträge</div>
       <DataElement
         v-for="dataSet in filteredData"
         :key="dataSet.id"
