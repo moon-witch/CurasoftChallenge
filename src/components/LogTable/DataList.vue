@@ -29,9 +29,9 @@ const isTokenValid = computed(() => { return userStore.token !== null })
 
 <template>
   <section class="list">
-    <div v-if="!isTokenValid && !loading">401 - Ungültiger Token</div>
-    <div v-if="loading">Lade Daten...</div>
-      <div v-if="filteredData.length === 0 && !loading" class="no-data">Keine Einträge</div>
+    <div v-if="!isTokenValid && !loading" class="info">401 - Ungültiger Token</div>
+    <div v-if="loading" class="info">Lade Daten...</div>
+      <div v-if="filteredData.length === 0 && !loading" class="info">Keine Einträge</div>
       <DataElement
         v-for="dataSet in filteredData"
         :key="dataSet.id"
@@ -51,5 +51,9 @@ const isTokenValid = computed(() => { return userStore.token !== null })
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
+
+  .info {
+    text-align: center;
+  }
 }
 </style>
