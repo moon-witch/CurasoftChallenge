@@ -7,9 +7,18 @@ import LogTable from "@/components/LogTable/LogTable.vue";
 const protokollStore = useProtokollStore();
 
 const searchString = ref("")
+let debounceTimer: number;
 const handleSearch = (event: string) => {
   searchString.value = event;
+  clearTimeout(debounceTimer)
+  debounceTimer = setTimeout(() => {
+    newQuery()
+  }, 300)
 };
+
+const newQuery = () => {
+  protokollStore.request(protokollStore.currentPage, searchString.value)
+}
 
 onMounted(async () => {
   await protokollStore.request();

@@ -14,7 +14,7 @@ export const useProtokollStore = defineStore("protokoll", () => {
       return lastResponse.value || {};
     });
 
-  const request = async (page = currentPage.value) => {
+  const request = async (page: number = currentPage.value, needle: string | null = null) => {
     try {
       isLoading.value = true;
       const response = await api.request({
@@ -23,18 +23,22 @@ export const useProtokollStore = defineStore("protokoll", () => {
         getParams: {
           page,
           limit: pageSize.value,
+          needle: needle
         }
       })
 
       const data = await response.json();
 
       lastResponse.value = data;
+      totalPages.value = data.page_count
+      console.log('data', data)
+      console.log('pages', totalPages.value)
     } catch (error) {
-      console.error("Error fetiching data:", error);
+      console.error("Error fetching data:", error);
     } finally {
       isLoading.value = false;
     }
   };
 
-  return { lastResponse, isLoading, getItems, request };
+  return { lastResponse, isLoading, currentPage, getItems, request };
 });
