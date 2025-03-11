@@ -2,6 +2,7 @@
 import { computed, ref, watch } from "vue";
 import DataElement from "@/components/LogTable/DataElement.vue";
 import { useProtokollStore } from "@/stores/protokoll";
+import { useUserStore } from "@/stores/user";
 
 const props = defineProps( {
   filter: {
@@ -10,6 +11,7 @@ const props = defineProps( {
 })
 
 const protokollStore = useProtokollStore()
+const userStore = useUserStore()
 const data: any = protokollStore.getItems()
 const filteredData = computed(() => {
   if (data.value.items) {
@@ -22,10 +24,12 @@ const filteredData = computed(() => {
 });
 
 const loading = computed(() => { return protokollStore.isLoading })
+const isTokenValid = computed(() => { return userStore.token !== null })
 </script>
 
 <template>
   <section class="list">
+    <div v-if="!isTokenValid && !loading">401 - Ungültiger Token</div>
     <div v-if="loading">Lade Daten...</div>
       <div v-if="filteredData.length === 0 && !loading" class="no-data">Keine Einträge</div>
       <DataElement
