@@ -20,8 +20,8 @@ const changeFilter = (event: string) => {
   <div class="table">
     <FilterButton @filter="changeFilter($event)" />
     <DataList :filter="currentFilter"/>
-    <Paginator class="paginator"/>
-  </div>}
+    <Paginator />
+  </div>
 </template>
 
 <style scoped lang="scss">

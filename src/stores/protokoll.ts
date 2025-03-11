@@ -17,7 +17,6 @@ export const useProtokollStore = defineStore("protokoll", () => {
 
   function updateSearchString(str: string) {
     searchString.value = str;
-    console.log(searchString.value);
   }
 
   function updateCurrentPage(page: number) {
@@ -42,8 +41,6 @@ export const useProtokollStore = defineStore("protokoll", () => {
       lastResponse.value = data;
       totalPages.value = data.page_count;
       currentPage.value = data.page;
-      console.log('data', data)
-      console.log('pages', totalPages.value)
     } catch (error) {
       console.error("Error fetching data:", error);
     } finally {
