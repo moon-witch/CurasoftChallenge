@@ -12,7 +12,7 @@ const props = defineProps( {
 
 const protokollStore = useProtokollStore()
 const userStore = useUserStore()
-const data: any = protokollStore.getItems()
+const data: any = computed(() => { return protokollStore.getItems })
 const filteredData = computed(() => {
   if (data.value.items) {
     if (props.filter === "alle") {

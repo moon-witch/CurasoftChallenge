@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import ContentCard from "@/components/ContentCard/ContentCard.vue";
 import { useProtokollStore } from "@/stores/protokoll";
-import { onMounted, provide, ref, watch } from "vue";
+import { computed, onMounted, provide, ref, watch } from "vue";
 import LogTable from "@/components/LogTable/LogTable.vue";
 
 const protokollStore = useProtokollStore();
@@ -14,8 +14,6 @@ const handleSearch = (event: string) => {
 onMounted(async () => {
   await protokollStore.request();
 });
-
-const data = protokollStore.getItems()
 </script>
 
 <template>

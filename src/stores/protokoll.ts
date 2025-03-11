@@ -10,8 +10,7 @@ export const useProtokollStore = defineStore("protokoll", () => {
   const pageSize = ref<number>(10);
   const isLoading = ref(true);
 
-  const getItems = () =>
-    computed(() => {
+  const getItems = computed(() => {
       return lastResponse.value || {};
     });
 
